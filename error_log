@@ -1,0 +1,17 @@
+[28-Feb-2022 06:47:27 UTC] PHP Warning:  require(/home/m55xq7fk2rv2/public_html/vendor/autoload.php): Failed to open stream: No such file or directory in /home/m55xq7fk2rv2/public_html/index.php on line 34
+[28-Feb-2022 06:47:27 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/m55xq7fk2rv2/public_html/vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/m55xq7fk2rv2/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/m55xq7fk2rv2/public_html/index.php on line 34
+[28-Feb-2022 06:50:05 UTC] PHP Deprecated:  Return type of Symfony\Component\Console\Helper\HelperSet::getIterator() should either be compatible with IteratorAggregate::getIterator(): Traversable, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in phar:///opt/cpanel/composer/bin/composer/vendor/symfony/console/Helper/HelperSet.php on line 112
+[28-Feb-2022 06:50:50 UTC] PHP Warning:  require(/home/m55xq7fk2rv2/public_html/vendor/autoload.php): Failed to open stream: No such file or directory in /home/m55xq7fk2rv2/public_html/index.php on line 34
+[28-Feb-2022 06:50:51 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/m55xq7fk2rv2/public_html/vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/m55xq7fk2rv2/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/m55xq7fk2rv2/public_html/index.php on line 34
+[28-Feb-2022 06:51:21 UTC] PHP Warning:  require(/home/m55xq7fk2rv2/public_html/vendor/autoload.php): Failed to open stream: No such file or directory in /home/m55xq7fk2rv2/public_html/index.php on line 34
+[28-Feb-2022 06:51:24 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/m55xq7fk2rv2/public_html/vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/m55xq7fk2rv2/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/m55xq7fk2rv2/public_html/index.php on line 34
+[28-Feb-2022 08:16:19 UTC] PHP Deprecated:  Return type of Symfony\Component\Console\Helper\HelperSet::getIterator() should either be compatible with IteratorAggregate::getIterator(): Traversable, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in phar:///opt/cpanel/composer/bin/composer/vendor/symfony/console/Helper/HelperSet.php on line 112
