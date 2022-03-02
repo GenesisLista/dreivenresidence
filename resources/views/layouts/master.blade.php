@@ -47,15 +47,24 @@
 
     </div>
 
-    <script src="{{ asset('public/bundles/lib.vendor.bundle.js') }}"></script>
+    @yield('popup')
 
-    <script src="{{ asset('public/bundles/apexcharts.bundle.js') }}"></script>
+    <!-- Scripts -->
+    @stack('before-scripts')
+    <script src="{{ asset('public/bundles/lib.vendor.bundle.js') }}"></script>
+    @stack('after-scripts')
+
+    @if (trim($__env->yieldContent('page-script')))
+    @yield('page-script')
+    @endif
+
+    <!-- <script src="{{ asset('public/bundles/apexcharts.bundle.js') }}"></script>
     <script src="{{ asset('public/bundles/counterup.bundle.js') }}"></script>
     <script src="{{ asset('public/bundles/knobjs.bundle.js') }}"></script>
     <script src="{{ asset('public/bundles/c3.bundle.js') }}"></script>
 
     <script src="{{ asset('public/js/core.js') }}"></script>
-    <script src="{{ asset('public/js/page/index.js') }}"></script>
+    <script src="{{ asset('public/js/page/index.js') }}"></script> -->
 </body>
 
 </html>

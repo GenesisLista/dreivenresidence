@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Pms\TenantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +21,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    // VMS
+    Route::prefix('pms')->group(function () {
+        Route::resource('tenant', TenantController::class);
+    });
+    
+});
+
+
