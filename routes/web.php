@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Pms\TenantController;
+use App\Http\Controllers\Pms\TenantStatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +25,16 @@ Auth::routes();
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    // VMS
+    // Tenant
     Route::prefix('pms')->group(function () {
         Route::resource('tenant', TenantController::class);
     });
+
+    // Settings
+    Route::prefix('settings')->group(function () {
+        Route::resource('tenant-status', TenantStatusController::class);
+    });
+
     
 });
 

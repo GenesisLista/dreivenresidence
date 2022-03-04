@@ -17,6 +17,18 @@
                 </ul>
             </li>
             <li class="{{ Request::segment(2) === 'apartment' ? 'active' : null }}"><a href="javascript:void(0)"><i class="fa fa-bank"></i><span>Apartment</span></a></li>
+            <li class="{{ Request::segment(1) === 'settings' ? 'active' : null }}">
+                <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-gears"></i><span>Settings</span></a>
+                <ul>
+                    <li class="{{ Request::segment(2) === 'tenant-status' ? 'active' : null }}"><a href="{{ route('tenant-status.index') }}">Tenant Status</a></li>
+                    <!-- <li class="{{ Request::segment(2) === 'list' ? 'active' : null }}"><a href="javascript:void(0)">Project list</a></li>
+                    <li class="{{ Request::segment(2) === 'taskboard' ? 'active' : null }}"><a href="javascript:void(0)">Taskboard</a></li>
+                    <li class="{{ Request::segment(2) === 'ticket' ? 'active' : null }}"><a href="javascript:void(0)">Ticket List</a></li>
+                    <li class="{{ Request::segment(2) === 'ticketdetails' ? 'active' : null }}"><a href="javascript:void(0)">Ticket Details</a></li>
+                    <li class="{{ Request::segment(2) === 'clients' ? 'active' : null }}"><a href="javascript:void(0)">Clients</a></li>
+                    <li class="{{ Request::segment(2) === 'todo' ? 'active' : null }}"><a href="javascript:void(0)">Todo List</a></li> -->
+                </ul>
+            </li>
 
             <!-- <li class="{{ Request::segment(2) === 'users' ? 'active' : null }}"><a href="javascript:void(0)"><i class="icon-users"></i><span>User</span></a></li>
             <li class="{{ Request::segment(2) === 'departments' ? 'active' : null }}"><a href="javascript:void(0)"><i class="icon-control-pause"></i><span>Departments</span></a></li>
