@@ -19,7 +19,7 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="submit" class="btn btn-primary"><i class="fe fe-check mr-2"></i>Add</button>
                             <a class="btn btn-warning" href="{{ route('tenant-status.index') }}"><i class="fe fe-arrow-left mr-2"></i>Back</a>
                         </div>
                     </div>

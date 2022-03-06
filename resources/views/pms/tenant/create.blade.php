@@ -25,7 +25,12 @@
                     </div>
                     <div class="col-md-4 col-sm-12">
                         <div class="form-group">
-                            <input data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="mm/dd/yyyy *">
+                            <input data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Date of occupancy - mm/dd/yyyy *">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Rental Billing *">
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-12">
@@ -34,6 +39,28 @@
                                 <option>Select Tenant Status</option>
                                 <option>Active</option>
                                 <option>Not Active</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <select class="form-control show-tick">
+                                <option>Select Tenant Location</option>
+                                <option>Sampaloc</option>
+                                <option>Sta. Mesa</option>
+                                <option>Roxas District</option>
+                                <option>ALR Building</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <select class="form-control show-tick">
+                                <option>Select Room Number</option>
+                                <option>201</option>
+                                <option>202</option>
+                                <option>203</option>
+                                <option>204</option>
                             </select>
                         </div>
                     </div>

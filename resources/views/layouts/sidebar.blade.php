@@ -9,24 +9,32 @@
                 <ul>
                     <li class="{{ Request::segment(2) === 'tenant' ? 'active' : null }}"><a href="{{ route('tenant.index') }}">Tenant List</a></li>
                     <li class="{{ Request::segment(2) === 'list' ? 'active' : null }}"><a href="javascript:void(0)">Billing list</a></li>
-                    <!-- <li class="{{ Request::segment(2) === 'taskboard' ? 'active' : null }}"><a href="javascript:void(0)">Taskboard</a></li>
-                    <li class="{{ Request::segment(2) === 'ticket' ? 'active' : null }}"><a href="javascript:void(0)">Ticket List</a></li>
-                    <li class="{{ Request::segment(2) === 'ticketdetails' ? 'active' : null }}"><a href="javascript:void(0)">Ticket Details</a></li>
-                    <li class="{{ Request::segment(2) === 'clients' ? 'active' : null }}"><a href="javascript:void(0)">Clients</a></li>
-                    <li class="{{ Request::segment(2) === 'todo' ? 'active' : null }}"><a href="javascript:void(0)">Todo List</a></li> -->
                 </ul>
             </li>
-            <li class="{{ Request::segment(2) === 'apartment' ? 'active' : null }}"><a href="javascript:void(0)"><i class="fa fa-bank"></i><span>Apartment</span></a></li>
+
+            <li class="{{ Request::segment(1) === 'billing' ? 'active' : null }}">
+                <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-calculator"></i><span>Billing</span></a>
+                <ul>
+                    <li class="{{ Request::segment(2) === 'rental' ? 'active' : null }}"><a href="{{ route('sampaloc.index') }}">Rental List</a></li>
+                    <li class="{{ Request::segment(2) === 'meralco' ? 'active' : null }}"><a href="{{ route('sta-mesa.index') }}">Meralco List</a></li>
+                    <li class="{{ Request::segment(2) === 'maynilad' ? 'active' : null }}"><a href="{{ route('roxas-district.index') }}">Maynilad List</a></li>
+                </ul>
+            </li>
+
+            <li class="{{ Request::segment(1) === 'apartment' ? 'active' : null }}">
+                <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-building"></i><span>Apartment</span></a>
+                <ul>
+                    <li class="{{ Request::segment(2) === 'sampaloc' ? 'active' : null }}"><a href="{{ route('sampaloc.index') }}">Sampaloc List</a></li>
+                    <li class="{{ Request::segment(2) === 'sta-mesa' ? 'active' : null }}"><a href="{{ route('sta-mesa.index') }}">Sta. Mesa list</a></li>
+                    <li class="{{ Request::segment(2) === 'roxas-district' ? 'active' : null }}"><a href="{{ route('roxas-district.index') }}">Roxas Dist. list</a></li>
+                    <li class="{{ Request::segment(2) === 'alr-building' ? 'active' : null }}"><a href="{{ route('alr-building.index') }}">ALR Bldg. list</a></li>
+                </ul>
+            </li>
+
             <li class="{{ Request::segment(1) === 'settings' ? 'active' : null }}">
                 <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-gears"></i><span>Settings</span></a>
                 <ul>
                     <li class="{{ Request::segment(2) === 'tenant-status' ? 'active' : null }}"><a href="{{ route('tenant-status.index') }}">Tenant Status</a></li>
-                    <!-- <li class="{{ Request::segment(2) === 'list' ? 'active' : null }}"><a href="javascript:void(0)">Project list</a></li>
-                    <li class="{{ Request::segment(2) === 'taskboard' ? 'active' : null }}"><a href="javascript:void(0)">Taskboard</a></li>
-                    <li class="{{ Request::segment(2) === 'ticket' ? 'active' : null }}"><a href="javascript:void(0)">Ticket List</a></li>
-                    <li class="{{ Request::segment(2) === 'ticketdetails' ? 'active' : null }}"><a href="javascript:void(0)">Ticket Details</a></li>
-                    <li class="{{ Request::segment(2) === 'clients' ? 'active' : null }}"><a href="javascript:void(0)">Clients</a></li>
-                    <li class="{{ Request::segment(2) === 'todo' ? 'active' : null }}"><a href="javascript:void(0)">Todo List</a></li> -->
                 </ul>
             </li>
 

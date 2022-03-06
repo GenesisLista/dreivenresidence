@@ -1,4 +1,4 @@
-<div id="page_top" class="section-body top_dark">
+<div id="page_top" class="section-body">
     <div class="container-fluid">
         <div class="page-header">
             <div class="left">

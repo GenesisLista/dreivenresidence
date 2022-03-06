@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Database\Seeders\ApartmentStatusSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,5 +16,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+
+        // Check if the table exists
+        if(DB::table('apartment_statuses')->count()==0) {
+            $this->call(ApartmentStatusSeeder::class);
+        }
+
     }
 }
