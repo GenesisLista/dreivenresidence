@@ -44,7 +44,6 @@
                             <table class="table table-hover js-basic-example dataTable table_custom border-style spacing5">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Room</th>
                                         <th>Status</th>
                                         <th>Actions</th>
@@ -52,7 +51,6 @@
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Room</th>
                                         <th>Status</th>
                                         <th>Actions</th>
@@ -61,7 +59,6 @@
                                 <tbody>
                                     @foreach($apartment_list as $aptlist)
                                     <tr>
-                                        <td>{{ $aptlist->id }}</td>
                                         <td>{{ $aptlist->room }}</td>
                                         <td>{{ $aptlist->apartment_status->status_name }}</td>
                                         <td class="actions">
