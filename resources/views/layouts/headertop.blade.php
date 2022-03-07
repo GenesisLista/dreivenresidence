@@ -13,8 +13,8 @@
         <div class="hright">
             <div class="dropdown">
                 <!-- <a href="javascript:void(0)" class="nav-link icon settingbar"><i class="fa fa-gear fa-spin" data-toggle="tooltip" data-placement="right" title="Settings"></i></a>
-                <a href="javascript:void(0)" class="nav-link user_btn"><img class="avatar" src="{{ asset('public/images/user.png') }}" alt="" data-toggle="tooltip" data-placement="right" title="User Menu" /></a>
-                <form method="POST" action="{{ route('logout') }}"> -->
+                <a href="javascript:void(0)" class="nav-link user_btn"><img class="avatar" src="{{ asset('public/images/user.png') }}" alt="" data-toggle="tooltip" data-placement="right" title="User Menu" /></a> -->
+                <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a class="nav-link icon" href="{{ route('logout') }}" onclick="event.preventDefault();this.closest('form').submit();"><i class="dropdown-icon fe fe-log-out"></i></a>
                 </form>
