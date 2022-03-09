@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Pms;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\ApartmentStatus;
+use App\Http\Controllers\Controller;
+use App\Models\Apartment;
 
 class RoxasDistrictController extends Controller
 {
@@ -15,7 +17,13 @@ class RoxasDistrictController extends Controller
     public function index()
     {
         // Display the list
-        return view('pms.apartment.roxas_district.index');
+        $apartment_list = Apartment::where('location', 3)->with([
+            'apartment_status'
+        ])->get();
+
+        return view('pms.apartment.roxas_district.index')->with([
+            'apartment_list' => $apartment_list
+        ]);
     }
 
     /**
@@ -25,7 +33,12 @@ class RoxasDistrictController extends Controller
      */
     public function create()
     {
-        //
+        // Display the form
+        $apartment_status = ApartmentStatus::all();
+
+        return view('pms.apartment.roxas_district.create')->with([
+            'apartment_status' => $apartment_status
+        ]);
     }
 
     /**
@@ -34,9 +47,24 @@ class RoxasDistrictController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Apartment $apartment)
     {
-        //
+        // Save the data
+
+        // Validate
+        $request->validate([
+            'apartment_room_number' => 'required|alpha_num',
+            'apartment_status_name' => 'required'
+        ]);
+
+        $apartment->location = 3; // Roxas District
+        $apartment->room = $request->apartment_room_number;
+        $apartment->apartment_status_id = $request->apartment_status_name;
+        $apartment->save();
+
+        return redirect()->route('roxas-district.index')->with('success_add', 'Record added successfully');
+
+
     }
 
     /**
@@ -47,7 +75,12 @@ class RoxasDistrictController extends Controller
      */
     public function show($id)
     {
-        //
+        // Display the details
+        $apartment_list = Apartment::findOrFail($id);
+
+        return view('pms.apartment.roxas_district.show')->with([
+            'apartment_list' => $apartment_list
+        ]);
     }
 
     /**
@@ -58,7 +91,16 @@ class RoxasDistrictController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Display the form
+        $apartment_list = Apartment::with([
+            'apartment_status'
+        ])->findOrFail($id);
+        $apartment_status = ApartmentStatus::all();
+
+        return view('pms.apartment.roxas_district.edit')->with([
+            'apartment_list' => $apartment_list,
+            'apartment_status' => $apartment_status
+        ]);
     }
 
     /**
@@ -70,7 +112,18 @@ class RoxasDistrictController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Validate
+        $request->validate([
+            'apartment_room_number' => 'required|alpha_num',
+            'apartment_status_name' => 'required'
+        ]);
+
+        $apartment_list = Apartment::findOrFail($id);
+        $apartment_list->room = $request->apartment_room_number;
+        $apartment_list->apartment_status_id = $request->apartment_status_name;
+        $apartment_list->save();
+
+        return redirect()->route('roxas-district.index')->with('success_update', 'Record updated successfully');
     }
 
     /**
@@ -81,6 +134,9 @@ class RoxasDistrictController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Delete the data
+        Apartment::destroy($id);
+
+        return redirect()->route('roxas-district.index')->with('success_delete', 'Record deleted successfully');
     }
 }

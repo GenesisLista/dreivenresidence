@@ -52,7 +52,7 @@ class StaMesaController extends Controller
 
         // Validate
         $request->validate([
-            'apartment_room_number' => 'required|numeric',
+            'apartment_room_number' => 'required|alpha_num',
             'apartment_status_name' => 'required'
         ]);
 
@@ -114,7 +114,7 @@ class StaMesaController extends Controller
 
         // Validate
         $request->validate([
-            'apartment_room_number' => 'required|numeric',
+            'apartment_room_number' => 'required|alpha_num',
             'apartment_status_name' => 'required'
         ]);
 

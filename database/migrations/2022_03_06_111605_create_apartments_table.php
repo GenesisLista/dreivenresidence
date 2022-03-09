@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
             $table->integer('location')->nullable()->comment('1-Sampaloc 2-StaMesa 3-RoxasDist 4-AlrBldg');
-            $table->integer('room')->nullable();
+            $table->text('room')->nullable();
             $table->bigInteger('apartment_status_id')->unsigned()->nullable(); // Foreign key
             $table->timestamps();
 
