@@ -22,6 +22,7 @@ class ActiveTenantController extends Controller
 
         return view('pms.tenant.active.index')->with([
             'tenant_list' => $tenant_list
+
         ]);
     }
 
@@ -48,9 +49,9 @@ class ActiveTenantController extends Controller
 
         // Validate
         $request->validate([
-            'tenant_name' => 'required',
-            'tenant_email_address' => 'required|email',
-            'tenant_mobile_number' => 'required|numeric'
+            'tenant_name' => 'required'
+            // 'tenant_email_address' => 'required|email',
+            // 'tenant_mobile_number' => 'required|numeric'
         ]);
 
         $tenant->name = $request->tenant_name;
@@ -106,9 +107,9 @@ class ActiveTenantController extends Controller
 
         // Validate
         $request->validate([
-            'tenant_name' => 'required',
-            'tenant_email_address' => 'required|email',
-            'tenant_mobile_number' => 'required|numeric'
+            'tenant_name' => 'required'
+            // 'tenant_email_address' => 'required|email',
+            // 'tenant_mobile_number' => 'required|numeric'
         ]);
 
         $tenant = Tenant::findOrFail($id);
