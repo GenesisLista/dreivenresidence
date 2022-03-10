@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('mobile')->nullable();
 
             // These can be update on the Rental
-            $table->bigInteger('status_id')->unsigned()->nullable()->default(1); // Foreign key
+            $table->bigInteger('status_id')->unsigned()->nullable(); // Foreign key
             
             // These are encoded on the Rental
             $table->date('start_date')->nullable();

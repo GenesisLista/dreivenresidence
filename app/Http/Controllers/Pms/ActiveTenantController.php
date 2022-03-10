@@ -17,7 +17,8 @@ class ActiveTenantController extends Controller
     {
         // Display the list
         // Active only
-        $tenant_list = Tenant::where('status_id', 1)->get();
+        $tenant_list = Tenant::where('status_id', 1)
+        ->orWhereNull('status_id')->get();
 
         return view('pms.tenant.active.index')->with([
             'tenant_list' => $tenant_list
