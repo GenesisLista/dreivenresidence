@@ -1,33 +1,39 @@
 @extends('layouts.master')
 @section('parentPageTitle', 'PMS')
-@section('title', 'Show ALR Bldg. Apartment')
+@section('title', 'Show Active Tenant')
 
 @section('content')
 <div class="section-body mt-3">
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                <h2 class="card-title">ALR Building Apartment</h2>
+                <h2 class="card-title">Active Tenants</h2>
                 <div class="card-options">
-                    <a href="{{ route('alr-building.edit', $apartment_list->id) }}"><i class="fe fe-edit"></i></a>
+                    <a href="{{ route('active-tenant.edit', $tenant->id) }}"><i class="fe fe-edit"></i></a>
                 </div>
             </div>
             <div class="card-body">
                 <div class="row clearfix">
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="form-group">
-                            <label class="form-label">Room number</label>
-                            <div class="form-control-plaintext">{{ $apartment_list->room }}</div>
+                            <label class="form-label">Name</label>
+                            <div class="form-control-plaintext">{{ $tenant->name }}</div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="form-group">
-                            <label class="form-label">Status</label>
-                            <div class="form-control-plaintext">{{ $apartment_list->apartment_status->status_name }}</div>
+                            <label class="form-label">Email Address</label>
+                            <div class="form-control-plaintext">{{ $tenant->email }}</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Mobile Number</label>
+                            <div class="form-control-plaintext">{{ $tenant->mobile }}</div>
                         </div>
                     </div>
                     <div class="col-12">
-                        <a class="btn btn-warning" href="{{ route('alr-building.index') }}"><i class="fe fe-arrow-left mr-2"></i>Back</a>
+                        <a class="btn btn-warning" href="{{ route('active-tenant.index') }}"><i class="fe fe-arrow-left mr-2"></i>Back</a>
                     </div>
                 </div>
             </div>

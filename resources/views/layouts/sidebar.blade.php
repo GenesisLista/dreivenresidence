@@ -4,20 +4,29 @@
         <ul class="metismenu">
             <li class="g_heading">PMS</li>
             <li class="{{ Request::segment(2) === 'index' ? 'active' : null }}"><a href="{{ url('home') }}"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
-            <li class="{{ Request::segment(1) === 'pms' ? 'active' : null }}">
-                <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-group"></i><span>Tenant</span></a>
+            
+            <li class="{{ Request::segment(1) === 'rental' ? 'active' : null }}">
+                <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-group"></i><span>Rental</span></a>
                 <ul>
-                    <li class="{{ Request::segment(2) === 'tenant' ? 'active' : null }}"><a href="{{ route('tenant.index') }}">Tenant List</a></li>
-                    <li class="{{ Request::segment(2) === 'list' ? 'active' : null }}"><a href="javascript:void(0)">Billing list</a></li>
+                    <li class="{{ Request::segment(2) === 'active-rental' ? 'active' : null }}"><a href="javascript:void(0)">Active Rental</a></li>
+                    <li class="{{ Request::segment(2) === 'not-active-rental' ? 'active' : null }}"><a href="javascript:void(0)">Not Active Rental</a></li>
                 </ul>
             </li>
 
             <li class="{{ Request::segment(1) === 'billing' ? 'active' : null }}">
                 <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-calculator"></i><span>Billing</span></a>
                 <ul>
-                    <li class="{{ Request::segment(2) === 'rental' ? 'active' : null }}"><a href="{{ route('sampaloc.index') }}">Rental List</a></li>
-                    <li class="{{ Request::segment(2) === 'meralco' ? 'active' : null }}"><a href="{{ route('sta-mesa.index') }}">Meralco List</a></li>
-                    <li class="{{ Request::segment(2) === 'maynilad' ? 'active' : null }}"><a href="{{ route('roxas-district.index') }}">Maynilad List</a></li>
+                    <li class="{{ Request::segment(2) === 'rental' ? 'active' : null }}"><a href="javascript:void(0)">Rental Billing</a></li>
+                    <li class="{{ Request::segment(2) === 'meralco' ? 'active' : null }}"><a href="javascript:void(0)">Meralco Billing</a></li>
+                    <li class="{{ Request::segment(2) === 'maynilad' ? 'active' : null }}"><a href="javascript:void(0)">Maynilad Billing</a></li>
+                </ul>
+            </li>
+
+            <li class="{{ Request::segment(1) === 'tenant' ? 'active' : null }}">
+                <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-group"></i><span>Tenant</span></a>
+                <ul>
+                    <li class="{{ Request::segment(2) === 'active-tenant' ? 'active' : null }}"><a href="{{ route('active-tenant.index') }}">Active Tenant</a></li>
+                    <li class="{{ Request::segment(2) === 'not-active-tenant' ? 'active' : null }}"><a href="javascript:void(0)">Not Active Tenant</a></li>
                 </ul>
             </li>
 
@@ -26,8 +35,8 @@
                 <ul>
                     <li class="{{ Request::segment(2) === 'sampaloc' ? 'active' : null }}"><a href="{{ route('sampaloc.index') }}">Sampaloc List</a></li>
                     <li class="{{ Request::segment(2) === 'sta-mesa' ? 'active' : null }}"><a href="{{ route('sta-mesa.index') }}">Sta. Mesa list</a></li>
-                    <li class="{{ Request::segment(2) === 'roxas-district' ? 'active' : null }}"><a href="{{ route('roxas-district.index') }}">Roxas Dist. list</a></li>
-                    <li class="{{ Request::segment(2) === 'alr-building' ? 'active' : null }}"><a href="{{ route('alr-building.index') }}">ALR Bldg. list</a></li>
+                    <li class="{{ Request::segment(2) === 'roxas-district' ? 'active' : null }}"><a href="{{ route('roxas-district.index') }}">Roxas Dist. List</a></li>
+                    <li class="{{ Request::segment(2) === 'alr-building' ? 'active' : null }}"><a href="{{ route('alr-building.index') }}">ALR Bldg. List</a></li>
                 </ul>
             </li>
 

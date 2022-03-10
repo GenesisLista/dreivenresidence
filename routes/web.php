@@ -7,6 +7,7 @@ use App\Http\Controllers\Pms\StaMesaController;
 use App\Http\Controllers\Pms\SampalocController;
 use App\Http\Controllers\Pms\ApartmentController;
 use App\Http\Controllers\Pms\AlrBuildingController;
+use App\Http\Controllers\Pms\ActiveTenantController;
 use App\Http\Controllers\Pms\TenantStatusController;
 use App\Http\Controllers\Pms\RoxasDistrictController;
 
@@ -30,9 +31,9 @@ Auth::routes();
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::prefix('pms')->group(function () {
+    Route::prefix('tenant')->group(function () {
         // Tenant
-        Route::resource('tenant', TenantController::class);
+        Route::resource('active-tenant', ActiveTenantController::class);
     });
 
     Route::prefix('apartment')->group(function () {

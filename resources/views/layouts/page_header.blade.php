@@ -3,17 +3,17 @@
         <div class="page-header">
             <div class="left">
                 <h1 class="page-title">@yield('title')</h1>
-                <select class="custom-select">
+                <!-- <select class="custom-select">
                     <option>Year</option>
                     <option>Month</option>
                     <option>Week</option>
                 </select>
                 <div class="input-group xs-hide">
                     <input type="text" class="form-control" placeholder="Search...">
-                </div>
+                </div> -->
             </div>
             <div class="right">
-                <ul class="nav nav-pills">
+                <!-- <ul class="nav nav-pills">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Language</a>
                         <div class="dropdown-menu">
@@ -44,9 +44,9 @@
                             <a class="dropdown-item" href="#">New Blog post</a>
                         </div>
                     </li>
-                </ul>
+                </ul> -->
                 <div class="notification d-flex">
-                    <div class="dropdown d-flex">
+                    <!-- <div class="dropdown d-flex">
                         <a class="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-1" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="badge badge-success nav-unread"></span></a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                             <ul class="right_chat list-unstyled w250 p-0">
@@ -102,8 +102,8 @@
                             <div class="dropdown-divider"></div>
                             <a href="javascript:void(0)" class="dropdown-item text-center text-muted-dark readall">Mark all as read</a>
                         </div>
-                    </div>
-                    <div class="dropdown d-flex">
+                    </div> -->
+                    <!-- <div class="dropdown d-flex">
                         <a class="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-1" data-toggle="dropdown"><i class="fa fa-bell"></i><span class="badge badge-primary nav-unread"></span></a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                             <ul class="list-unstyled feeds_widget">
@@ -146,16 +146,16 @@
                             <div class="dropdown-divider"></div>
                             <a href="javascript:void(0)" class="dropdown-item text-center text-muted-dark readall">Mark all as read</a>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="dropdown d-flex">
                         <a class="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-1" data-toggle="dropdown"><i class="fa fa-user"></i></a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fe fe-user"></i> Profile</a>
+                            <!-- <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fe fe-user"></i> Profile</a>
                             <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fe fe-settings"></i> Settings</a>
                             <a class="dropdown-item" href="javascript:void(0)"><span class="float-right"><span class="badge badge-primary">6</span></span><i class="dropdown-icon fe fe-mail"></i> Inbox</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fe fe-send"></i> Message</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fe fe-send"></i> Message</a> -->
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fe fe-help-circle"></i> Need help?</a>
+                            <!-- <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fe fe-help-circle"></i> Need help?</a> -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();this.closest('form').submit();"><i class="dropdown-icon fe fe-log-out"></i> {{ __('Sign out') }}</a>
