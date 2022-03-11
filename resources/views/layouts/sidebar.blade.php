@@ -26,7 +26,7 @@
                 <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-group"></i><span>Tenant</span></a>
                 <ul>
                     <li class="{{ Request::segment(2) === 'active-tenant' ? 'active' : null }}"><a href="{{ route('active-tenant.index') }}">Active Tenant</a></li>
-                    <li class="{{ Request::segment(2) === 'not-active-tenant' ? 'active' : null }}"><a href="javascript:void(0)">Not Active Tenant</a></li>
+                    <li class="{{ Request::segment(2) === 'not-active-tenant' ? 'active' : null }}"><a href="{{ route('not-active-tenant.index') }}">Not Active Tenant</a></li>
                 </ul>
             </li>
 
