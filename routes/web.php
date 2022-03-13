@@ -7,10 +7,12 @@ use App\Http\Controllers\Pms\StaMesaController;
 use App\Http\Controllers\Pms\SampalocController;
 use App\Http\Controllers\Pms\ApartmentController;
 use App\Http\Controllers\Pms\AlrBuildingController;
+use App\Http\Controllers\Pms\ActiveRentalController;
 use App\Http\Controllers\Pms\ActiveTenantController;
-use App\Http\Controllers\Pms\NotActiveTenantController;
+use App\Http\Controllers\Pms\NotActiveRentalController;
 use App\Http\Controllers\Pms\TenantStatusController;
 use App\Http\Controllers\Pms\RoxasDistrictController;
+use App\Http\Controllers\Pms\NotActiveTenantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,18 @@ Auth::routes();
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+    // Rental
+    Route::prefix('rental')->group(function () {
+        // Active Rental
+        Route::resource('active-rental', ActiveRentalController::class);
+
+        // Not Active Rental
+        Route::resource('not-active-rental', NotActiveRentalController::class);
+    });
+
+    // Billing
+
+    // Tenant
     Route::prefix('tenant')->group(function () {
         // Active Tenant
         Route::resource('active-tenant', ActiveTenantController::class);
@@ -40,6 +54,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('not-active-tenant', NotActiveTenantController::class);
     });
 
+    // Apartment
     Route::prefix('apartment')->group(function () {
         // Sampaloc
         Route::resource('sampaloc', SampalocController::class);

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Pms;
 
-use App\Models\Tenant;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-class NotActiveTenantController extends Controller
+class NotActiveRentalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +15,8 @@ class NotActiveTenantController extends Controller
     public function index()
     {
         // Display the list
-        // Not Active only
-        $tenant_list = Tenant::where('status_id', 2)->get();
-
-        return view('pms.tenant.not_active.index')->with([
-            'tenant_list' => $tenant_list
-
-        ]);
+        // Not active only
+        return view('pms.rental.not_active.index');
     }
 
     /**
@@ -55,11 +49,7 @@ class NotActiveTenantController extends Controller
     public function show($id)
     {
         // Display the details
-        $tenant = Tenant::findOrFail($id);
-
-        return view('pms.tenant.not_active.show')->with([
-            'tenant' => $tenant
-        ]);
+        return view('pms.rental.not_active.show');
     }
 
     /**

@@ -6,10 +6,10 @@
             <li class="{{ Request::segment(2) === 'index' ? 'active' : null }}"><a href="{{ url('home') }}"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
             
             <li class="{{ Request::segment(1) === 'rental' ? 'active' : null }}">
-                <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-group"></i><span>Rental</span></a>
+                <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-user-plus"></i><span>Rental</span></a>
                 <ul>
-                    <li class="{{ Request::segment(2) === 'active-rental' ? 'active' : null }}"><a href="javascript:void(0)">Active Rental</a></li>
-                    <li class="{{ Request::segment(2) === 'not-active-rental' ? 'active' : null }}"><a href="javascript:void(0)">Not Active Rental</a></li>
+                    <li class="{{ Request::segment(2) === 'active-rental' ? 'active' : null }}"><a href="{{ route('active-rental.index') }}">Active Rental</a></li>
+                    <li class="{{ Request::segment(2) === 'not-active-rental' ? 'active' : null }}"><a href="{{ route('not-active-rental.index') }}">Not Active Rental</a></li>
                 </ul>
             </li>
 
