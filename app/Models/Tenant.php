@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Apartment;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tenant extends Model
 {
@@ -15,4 +16,10 @@ class Tenant extends Model
         'email',
         'mobile'
     ];
+
+    // Apartment relation
+    public function apartment()
+    {
+        return $this->belongsToMany(Apartment::class)->withTimestamps();
+    }
 }

@@ -55,7 +55,7 @@
     @stack('after-scripts')
 
     @if (trim($__env->yieldContent('page-script')))
-    @yield('page-script')
+        @yield('page-script')
     @endif
 
     <!-- <script src="{{ asset('public/bundles/apexcharts.bundle.js') }}"></script>

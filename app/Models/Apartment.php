@@ -22,4 +22,16 @@ class Apartment extends Model
     {
         return $this->belongsTo(ApartmentStatus::class);
     }
+
+    // Location Relation
+    public function location_list()
+    {
+        return $this->belongsTo(Location::class, 'location');
+    }
+
+    // Tenant Relation
+    public function tenant()
+    {
+        return $this->belongsToMany(Tenant::class)->withTimestamps();
+    }
 }

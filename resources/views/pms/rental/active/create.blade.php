@@ -5,17 +5,18 @@
 @section('content')
 <div class="section-body mt-3">
     <div class="container-fluid">
-        <form action="{{ route('active-rental.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('active-rental.store') }}" method="POST" enctype="multipart/form-data" autocomplete="false">
             {{ csrf_field() }}
             <div class="card">
                 <div class="card-body">
                     <div class="row clearfix">
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="form-group">
-                                <select class="form-control show-tick" name="rental_name">
-                                    <option value="">Select Rental Name</option>
-                                    <option value="1">Genesis Lista</option>
-                                    <option value="2">Mary Grace Lista</option>
+                                <select class="form-control show-tick" name="rental_tenant_name">
+                                    <option value="">Select Tenant Name</option>
+                                    @foreach($tenant as $tenantlist)
+                                    <option value="{{ $tenantlist->id }}">{{ $tenantlist->name }}</option>
+                                    @endforeach
                                 </select>
                                 @if($errors->has('rental_name'))
                                 <span class="text-danger">{{ $errors->first('rental_name') }}</span>
@@ -24,12 +25,11 @@
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="form-group">
-                                <select class="form-control show-tick" name="rental_location">
-                                    <option value="">Select Rental Location</option>
-                                    <option value="1">Sampaloc</option>
-                                    <option value="2">Sta. Mesa</option>
-                                    <option value="3">Roxas District</option>
-                                    <option value="4">ALR Building</option>
+                                <select class="form-control show-tick" id="rental_location" name="rental_location">
+                                    <option value="">Select Location</option>
+                                    @foreach($location as $locationlist)
+                                    <option value="{{ $locationlist->id }}">{{ $locationlist->name }}</option>
+                                    @endforeach
                                 </select>
                                 @if($errors->has('rental_location'))
                                 <span class="text-danger">{{ $errors->first('rental_location') }}</span>
@@ -38,12 +38,8 @@
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="form-group">
-                                <select class="form-control show-tick" name="rental_room_number">
+                                <select class="form-control show-tick" id="rental_room_number" name="rental_room_number">
                                     <option value="">Select Room Number</option>
-                                    <option value="201">201</option>
-                                    <option value="202">202</option>
-                                    <option value="203">203</option>
-                                    <option value="204">204</option>
                                 </select>
                                 @if($errors->has('rental_room_number'))
                                 <span class="text-danger">{{ $errors->first('rental_room_number') }}</span>
@@ -61,7 +57,7 @@
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="form-group">
                                 <div class="form-group">
-                                    <input name="rental_start_date" data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Rental start date - mm/dd/yyyy *">
+                                    <input name="rental_start_date" data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Rental start date - mm/dd/yyyy *" autocomplete="false">
                                 </div>
                                 @if($errors->has('rental_start_date'))
                                 <span class="text-danger">{{ $errors->first('rental_start_date') }}</span>
@@ -71,7 +67,7 @@
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="form-group">
                                 <div class="form-group">
-                                    <input name="rental_end_date" data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Rental end date - mm/dd/yyyy *">
+                                    <input name="rental_end_date" data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Rental end date - mm/dd/yyyy *" autocomplete="false">
                                 </div>
                                 @if($errors->has('rental_end_date'))
                                 <span class="text-danger">{{ $errors->first('rental_end_date') }}</span>
@@ -99,4 +95,48 @@
 <script src="{{ asset('public/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ asset('public/js/core.js') }}"></script>
 <script src="{{ asset('public/js/form/form-advanced.js') }}"></script>
+
+<script>
+    jQuery(document).ready(function() {
+
+        /* When location is selected it will display the room
+        based on the selected location */
+        $('#rental_location').on('change', function () {
+            $('#rental_room_number').empty().append('<option value="">Select Room Number</option>');
+
+            var location_id = $(this).val();
+            
+            console.log('GBL '  + location_id);
+
+            $.ajax({
+                url: "{{ route('active-rental.room-list') }}",
+                headers: {'X-CSRF-TOKEN': $('[name="_token"]').val()},
+                type: 'POST',
+                data: {'location_id': location_id},
+                success: function(result) {
+
+                    // console.log(result);
+
+                    jQuery.each(result, function(index, itemData) {
+
+                        console.log(itemData);
+
+                        $('#rental_room_number').append('<option value="' + itemData['room'] + '">' + itemData['room'] + '</option>');
+
+                        // Check the current language
+                        // if (lang == 'en') {
+                        //     var city_name = itemData['name_en'];
+                        // } else {
+                        //     var city_name = itemData['name_ar'];
+                        // }
+                        // $('#city').append('<option value="' + itemData['id'] + '">' + city_name + '</option>');
+                    });
+                }
+            });
+        });
+
+        
+    });
+</script>
 @stop
+

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Database\Seeders\LocationSeeder;
 use Database\Seeders\ApartmentStatusSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +21,11 @@ class DatabaseSeeder extends Seeder
         // Check if the table exists
         if(DB::table('apartment_statuses')->count()==0) {
             $this->call(ApartmentStatusSeeder::class);
+        }
+
+        // Check if the table exists
+        if(DB::table('locations')->count()==0) {
+            $this->call(LocationSeeder::class);
         }
 
     }

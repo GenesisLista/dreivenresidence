@@ -37,6 +37,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Rental
     Route::prefix('rental')->group(function () {
         // Active Rental
+        Route::post('active-rental/room-list', [ActiveRentalController::class, 'room_list'])->name('active-rental.room-list');
         Route::resource('active-rental', ActiveRentalController::class);
 
         // Not Active Rental

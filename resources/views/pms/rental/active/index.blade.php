@@ -45,35 +45,46 @@
                                 <thead>
                                     <tr>
                                         <th>Name</th>
+                                        <th>Start date</th>
+                                        <th>End date</th>
+                                        <th>Monthly</th>
                                         <th>Location</th>
-                                        <th>Room Number</th>
+                                        <th>Room</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                         <th>Name</th>
+                                        <th>Start date</th>
+                                        <th>End date</th>
+                                        <th>Monthly</th>
                                         <th>Location</th>
-                                        <th>Room Number</th>
+                                        <th>Room</th>
                                         <th>Actions</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
+                                    @foreach($rental as $rentallist)
                                     <tr>
-                                        <td>Genesis Lista</td>
-                                        <td>Sampaloc</td>
-                                        <td>201A</td>
+                                        <td>{{ $rentallist->name }}</td>
+                                        <td>{{ $rentallist->start_date == null ? '':date('m/d/Y',strtotime($rentallist->start_date)) }}</td>
+                                        <td>{{ $rentallist->end_date == null ? '':date('m/d/Y',strtotime($rentallist->end_date)) }}</td>
+                                        <td>{{ number_format($rentallist->monthly_rental) }}</td>
+                                        <td>{{ $rentallist->apartment[0]->location_list->name }}</td>
+                                        <td>{{ $rentallist->apartment[0]->room }}</td>
                                         <td class="actions">
-                                            <a href="{{ route('active-rental.show', 0) }}"><button class="btn btn-sm btn-icon on-default m-r-5" data-toggle="tooltip" data-original-title="Show"><i class="icon-doc" aria-hidden="true"></i></button></a>
+                                            <a href="{{ route('active-rental.show', $rentallist->id) }}"><button class="btn btn-sm btn-icon on-default m-r-5" data-toggle="tooltip" data-original-title="Show"><i class="icon-doc" aria-hidden="true"></i></button></a>
                                             <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()">
                                                 <button class="btn btn-sm btn-icon on-default button-remove" data-toggle="tooltip" data-original-title="Delete"><i class="icon-trash" aria-hidden="true"></i></button>
                                             </a>
-                                            <form method="post" action="{{ route('active-rental.destroy', 0) }}">
+                                            <form method="post" action="{{ route('active-rental.destroy', $rentallist->id) }}">
                                                 @method('DELETE')
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                             </form>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
