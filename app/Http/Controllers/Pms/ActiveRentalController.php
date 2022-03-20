@@ -61,6 +61,15 @@ class ActiveRentalController extends Controller
     {
         // Save the data
 
+        // Validate
+        $request->validate([
+            'rental_tenant_name' => 'required',
+            'rental_location' => 'required',
+            'rental_room_number' => 'required',
+            'rental_monthly' => 'required',
+            'rental_start_date' => 'required'
+        ]);
+
         // Tenant details
         $tenant_id = $request->rental_tenant_name;
 
@@ -75,14 +84,10 @@ class ActiveRentalController extends Controller
         $startDate = $request->rental_start_date;
         $start_date = Carbon::createFromFormat('m/d/Y', $startDate)->format('Y-m-d');
 
-        $endDate = $request->rental_end_date;
-        $end_date = Carbon::createFromFormat('m/d/Y', $endDate)->format('Y-m-d');
-
         // Update the tenant
         $update_tenant = Tenant::findOrFail($tenant_id);
         $update_tenant->status_id = 1;
         $update_tenant->start_date = $start_date;
-        $update_tenant->end_date = $end_date;
         $update_tenant->monthly_rental = $monthly_rental;
 
         if($update_tenant->save()) {
@@ -158,6 +163,12 @@ class ActiveRentalController extends Controller
 
         // Update the apartment to vacant
         $apartment_id = $request->apartment_id;
+
+        // Validate
+        $request->validate([
+            'rental_monthly' => 'required',
+            'rental_start_date' => 'required'
+        ]);
 
         if($request->rental_end_date==null)
         {

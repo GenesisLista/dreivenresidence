@@ -15,11 +15,11 @@
                                 <select class="form-control show-tick" name="rental_tenant_name">
                                     <option value="">Select Tenant Name</option>
                                     @foreach($tenant as $tenantlist)
-                                    <option value="{{ $tenantlist->id }}">{{ $tenantlist->name }}</option>
+                                    <option value="{{ $tenantlist->id }}" {{ old('rental_tenant_name') == $tenantlist->id ? 'selected' : ''}}>{{ $tenantlist->name }}</option>
                                     @endforeach
                                 </select>
-                                @if($errors->has('rental_name'))
-                                <span class="text-danger">{{ $errors->first('rental_name') }}</span>
+                                @if($errors->has('rental_tenant_name'))
+                                <span class="text-danger">{{ $errors->first('rental_tenant_name') }}</span>
                                 @endif
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="form-group">
                                 <div class="form-group">
-                                    <input name="rental_start_date" data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Rental start date - mm/dd/yyyy *" autocomplete="false">
+                                    <input name="rental_start_date" data-provide="datepicker" data-date-autoclose="true" class="form-control" value="{{ old('rental_start_date') }}" placeholder="Rental start date - mm/dd/yyyy *" autocomplete="false">
                                 </div>
                                 @if($errors->has('rental_start_date'))
                                 <span class="text-danger">{{ $errors->first('rental_start_date') }}</span>
