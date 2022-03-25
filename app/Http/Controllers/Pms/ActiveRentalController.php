@@ -21,12 +21,12 @@ class ActiveRentalController extends Controller
         // Display the list
         // Active rentals - tenants only
         $rental = Tenant::where('status_id', 1)
-        ->with([
-            'apartment',
-            'apartment.location_list'
-        ])
-        ->get();
-        
+            ->with([
+                'apartment',
+                'apartment.location_list'
+            ])
+            ->get();
+
         return view('pms.rental.active.index')->with([
             'rental' => $rental
         ]);
@@ -41,7 +41,7 @@ class ActiveRentalController extends Controller
     {
         // Display the form
         $tenant = Tenant::whereNull('status_id')
-        ->whereNull('start_date')->get();
+            ->whereNull('start_date')->get();
 
         $location = Location::all();
 
@@ -89,16 +89,24 @@ class ActiveRentalController extends Controller
         $update_tenant->status_id = 1;
         $update_tenant->start_date = $start_date;
         $update_tenant->monthly_rental = $monthly_rental;
+        $update_tenant->save();
 
-        if($update_tenant->save()) {
-            // Update the apartment
-            $update_apartment = Apartment::findOrFail($apartment_id);
-            $update_apartment->apartment_status_id = 2;
-            $update_apartment->save();
+        $update_apartment = Apartment::findOrFail($apartment_id);
+        $update_apartment->apartment_status_id = 2;
+        $update_apartment->save();
 
-            // Attached Pivot Table
-            $update_apartment->tenant()->attach($tenant_id);
-        }
+        // Attached Pivot Table
+        $update_apartment->tenant()->attach($tenant_id);
+
+        // if($update_tenant->save()) {
+        //     // Update the apartment
+        //     $update_apartment = Apartment::findOrFail($apartment_id);
+        //     $update_apartment->apartment_status_id = 2;
+        //     $update_apartment->save();
+
+        //     // Attached Pivot Table
+        //     $update_apartment->tenant()->attach($tenant_id);
+        // }
 
         return redirect()->route('active-rental.index')->with('success_add', 'Record added successfully');
     }
@@ -113,11 +121,11 @@ class ActiveRentalController extends Controller
     {
         // Display the details
         $tenant = Tenant::whereId($id)
-        ->with([
-            'apartment',
-            'apartment.location_list'
-        ])
-        ->get();
+            ->with([
+                'apartment',
+                'apartment.location_list'
+            ])
+            ->get();
         return view('pms.rental.active.show')->with([
             'tenant' => $tenant
         ]);
@@ -133,11 +141,11 @@ class ActiveRentalController extends Controller
     {
         // Display the form
         $tenant = Tenant::whereId($id)
-        ->with([
-            'apartment',
-            'apartment.location_list'
-        ])
-        ->get();
+            ->with([
+                'apartment',
+                'apartment.location_list'
+            ])
+            ->get();
 
         return view('pms.rental.active.edit')->with([
             'tenant' => $tenant
@@ -170,8 +178,7 @@ class ActiveRentalController extends Controller
             'rental_start_date' => 'required'
         ]);
 
-        if($request->rental_end_date==null)
-        {
+        if ($request->rental_end_date == null) {
             // Update the tenant details only
             $tenant = Tenant::findOrFail($tenant_id);
             $tenant->start_date = Carbon::createFromFormat('m/d/Y', $request->rental_start_date)->format('Y-m-d');
@@ -179,7 +186,7 @@ class ActiveRentalController extends Controller
             $tenant->save();
 
             return redirect()->route('active-rental.index')->with('success_update', 'Record updated successfully');
-        }else {
+        } else {
 
             // Update the tenant and apartment details
 
@@ -189,9 +196,9 @@ class ActiveRentalController extends Controller
             $tenant->start_date = Carbon::createFromFormat('m/d/Y', $request->rental_start_date)->format('Y-m-d');
             $tenant->end_date = Carbon::createFromFormat('m/d/Y', $request->rental_end_date)->format('Y-m-d');
             $tenant->monthly_rental = $request->rental_monthly;
-            
+
             // Update apartment details
-            if($tenant->save()) {
+            if ($tenant->save()) {
                 $apartment = Apartment::findOrFail($apartment_id);
                 $apartment->apartment_status_id = 1;
                 $apartment->save();
@@ -199,7 +206,6 @@ class ActiveRentalController extends Controller
 
             return redirect()->route('active-rental.index')->with('success_update', 'Record updated successfully');
         }
-        
     }
 
     /**
@@ -215,11 +221,11 @@ class ActiveRentalController extends Controller
         // Get the apartment id using the tenant because it use pivot table
         $tenant_id = $id;
         $tenant = Tenant::whereId($tenant_id)
-        ->with([
-            'apartment',
-            'apartment.location_list'
-        ])
-        ->get();
+            ->with([
+                'apartment',
+                'apartment.location_list'
+            ])
+            ->get();
 
         $apartment_id = $tenant[0]->apartment[0]->id;
 
@@ -244,7 +250,7 @@ class ActiveRentalController extends Controller
         $location_id = $request->location_id;
 
         return $room_list = Apartment::where('location', $location_id)
-        ->where('apartment_status_id', 1)
-        ->get();
+            ->where('apartment_status_id', 1)
+            ->get();
     }
 }
