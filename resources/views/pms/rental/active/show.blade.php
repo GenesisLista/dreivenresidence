@@ -9,7 +9,7 @@
             <div class="card-header">
                 <h2 class="card-title">Active Rental</h2>
                 <div class="card-options">
-                    <a href="{{ route('active-rental.edit', $tenant[0]->id) }}"><i class="fe fe-edit"></i></a>
+                    <a href="{{ route('active-rental.edit', $rental->id) }}"><i class="fe fe-edit"></i></a>
                 </div>
             </div>
             <div class="card-body">
@@ -17,37 +17,36 @@
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="form-group">
                             <label class="form-label">Rental Name</label>
-                            <div class="form-control-plaintext">{{ $tenant[0]->name }}</div>
+                            <div class="form-control-plaintext">{{ $rental->tenant->name }}</div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="form-group">
                             <label class="form-label">Rental Start Date</label>
-                            <div class="form-control-plaintext">{{ $tenant[0]->start_date == null ? '':date('m/d/Y',strtotime($tenant[0]->start_date)) }}</div>
+                            <div class="form-control-plaintext">{{ date('m/d/Y',strtotime($rental->start_date)) }}</div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="form-group">
-                            <label class="form-label">Rental End Date</label>
-                            <div class="form-control-plaintext">{{ $tenant[0]->end_date == null ? '':date('m/d/Y',strtotime($tenant[0]->end_date)) }}</div>
+                            
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="form-group">
                             <label class="form-label">Rental Monthly</label>
-                            <div class="form-control-plaintext">{{ number_format($tenant[0]->monthly_rental) }}</div>
+                            <div class="form-control-plaintext">{{ $rental->monthly_rental }}</div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="form-group">
                             <label class="form-label">Rental Location</label>
-                            <div class="form-control-plaintext">{{ $tenant[0]->apartment[0]->location_list->name }}</div>
+                            <div class="form-control-plaintext">{{ $rental->apartment->location_list->name }}</div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="form-group">
                             <label class="form-label">Rental Room</label>
-                            <div class="form-control-plaintext">{{ $tenant[0]->apartment[0]->room }}</div>
+                            <div class="form-control-plaintext">{{ $rental->apartment->room }}</div>
                         </div>
                     </div>
                     

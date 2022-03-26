@@ -42,6 +42,9 @@
                                 <thead>
                                     <tr>
                                         <th>Name</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Monthly</th>
                                         <th>Location</th>
                                         <th>Room Number</th>
                                         <th>Actions</th>
@@ -50,20 +53,28 @@
                                 <tfoot>
                                     <tr>
                                         <th>Name</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Monthly</th>
                                         <th>Location</th>
                                         <th>Room Number</th>
                                         <th>Actions</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
+                                    @foreach($rental as $rentallist)
                                     <tr>
-                                        <td>Genesis Lista</td>
-                                        <td>Sampaloc</td>
-                                        <td>201A</td>
+                                        <td>{{ $rentallist->tenant->name }}</td>
+                                        <td>{{ date('m/d/Y',strtotime($rentallist->start_date)) }}</td>
+                                        <td>{{ date('m/d/Y',strtotime($rentallist->end_date)) }}</td>
+                                        <td>{{ number_format($rentallist->monthly_rental) }}</td>
+                                        <td>{{ $rentallist->apartment->location_list->name }}</td>
+                                        <td>{{ $rentallist->apartment->room }}</td>
                                         <td class="actions">
-                                            <a href="{{ route('not-active-rental.show', 0) }}"><button class="btn btn-sm btn-icon on-default m-r-5" data-toggle="tooltip" data-original-title="Show"><i class="icon-doc" aria-hidden="true"></i></button></a>
+                                            <a href="{{ route('not-active-rental.show', $rentallist->id) }}"><button class="btn btn-sm btn-icon on-default m-r-5" data-toggle="tooltip" data-original-title="Show"><i class="icon-doc" aria-hidden="true"></i></button></a>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

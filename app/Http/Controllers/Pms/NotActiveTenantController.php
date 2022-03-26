@@ -17,7 +17,7 @@ class NotActiveTenantController extends Controller
     {
         // Display the list
         // Not Active only
-        $tenant_list = Tenant::where('status_id', 2)->get();
+        $tenant_list = Tenant::where('tenant_status_id', 2)->get();
 
         return view('pms.tenant.not_active.index')->with([
             'tenant_list' => $tenant_list

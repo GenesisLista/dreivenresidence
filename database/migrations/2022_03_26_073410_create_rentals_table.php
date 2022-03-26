@@ -13,17 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tenants', function (Blueprint $table) {
+        Schema::create('rentals', function (Blueprint $table) {
             $table->id();
-
-            // These are encoded on the Tenant
-            $table->string('name');
-            $table->string('email')->nullable();
-            $table->string('mobile')->nullable();
-
-            // These can be update on the Rental
-            $table->foreignId('tenant_status_id')->constrained(); // Foreign key
-            
+            $table->foreignId('tenant_id')->constrained(); // Foreign key
+            $table->foreignId('apartment_id')->constrained(); // Foreign key
+            $table->integer('monthly_rental');
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tenants');
+        Schema::dropIfExists('rentals');
     }
 };

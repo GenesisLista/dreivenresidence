@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pms;
 
 use App\Http\Controllers\Controller;
+use App\Models\Rental;
 use Illuminate\Http\Request;
 
 class NotActiveRentalController extends Controller
@@ -16,7 +17,15 @@ class NotActiveRentalController extends Controller
     {
         // Display the list
         // Not active only
-        return view('pms.rental.not_active.index');
+        $rental = Rental::whereNotNull('end_date')
+        ->with([
+            'tenant',
+            'apartment',
+            'apartment.location_list'
+        ])->get();
+        return view('pms.rental.not_active.index')->with([
+            'rental' => $rental
+        ]);
     }
 
     /**
@@ -49,7 +58,15 @@ class NotActiveRentalController extends Controller
     public function show($id)
     {
         // Display the details
-        return view('pms.rental.not_active.show');
+        $rental = Rental::with([
+            'tenant',
+            'apartment',
+            'apartment.location_list'
+        ])->findOrFail($id);
+
+        return view('pms.rental.not_active.show')->with([
+            'rental' => $rental
+        ]);
     }
 
     /**

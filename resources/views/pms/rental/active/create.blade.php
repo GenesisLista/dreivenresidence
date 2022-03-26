@@ -64,16 +64,6 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="form-group">
-                                <div class="form-group">
-                                    <input name="rental_end_date" data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Rental end date - mm/dd/yyyy *" autocomplete="false">
-                                </div>
-                                @if($errors->has('rental_end_date'))
-                                <span class="text-danger">{{ $errors->first('rental_end_date') }}</span>
-                                @endif
-                            </div>
-                        </div>
 
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary"><i class="fe fe-check mr-2"></i>Add</button>
@@ -106,8 +96,6 @@
 
             var location_id = $(this).val();
             
-            console.log('GBL '  + location_id);
-
             $.ajax({
                 url: "{{ route('active-rental.room-list') }}",
                 headers: {'X-CSRF-TOKEN': $('[name="_token"]').val()},
@@ -115,21 +103,8 @@
                 data: {'location_id': location_id},
                 success: function(result) {
 
-                    // console.log(result);
-
                     jQuery.each(result, function(index, itemData) {
-
-                        console.log(itemData);
-
                         $('#rental_room_number').append('<option value="' + itemData['room'] + '">' + itemData['room'] + '</option>');
-
-                        // Check the current language
-                        // if (lang == 'en') {
-                        //     var city_name = itemData['name_en'];
-                        // } else {
-                        //     var city_name = itemData['name_ar'];
-                        // }
-                        // $('#city').append('<option value="' + itemData['id'] + '">' + city_name + '</option>');
                     });
                 }
             });

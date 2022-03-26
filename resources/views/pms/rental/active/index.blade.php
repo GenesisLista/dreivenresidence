@@ -46,7 +46,6 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Start date</th>
-                                        <th>End date</th>
                                         <th>Monthly</th>
                                         <th>Location</th>
                                         <th>Room</th>
@@ -57,7 +56,6 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Start date</th>
-                                        <th>End date</th>
                                         <th>Monthly</th>
                                         <th>Location</th>
                                         <th>Room</th>
@@ -67,12 +65,11 @@
                                 <tbody>
                                     @foreach($rental as $rentallist)
                                     <tr>
-                                        <td>{{ $rentallist->name }}</td>
+                                        <td>{{ $rentallist->tenant->name }}</td>
                                         <td>{{ $rentallist->start_date == null ? '':date('m/d/Y',strtotime($rentallist->start_date)) }}</td>
-                                        <td>{{ $rentallist->end_date == null ? '':date('m/d/Y',strtotime($rentallist->end_date)) }}</td>
                                         <td>{{ number_format($rentallist->monthly_rental) }}</td>
-                                        <td>{{ $rentallist->apartment[0]->location_list->name }}</td>
-                                        <td>{{ $rentallist->apartment[0]->room }}</td>
+                                        <td>{{ $rentallist->apartment->location_list->name }}</td>
+                                        <td>{{ $rentallist->apartment->room }}</td>
                                         <td class="actions">
                                             <a href="{{ route('active-rental.show', $rentallist->id) }}"><button class="btn btn-sm btn-icon on-default m-r-5" data-toggle="tooltip" data-original-title="Show"><i class="icon-doc" aria-hidden="true"></i></button></a>
                                             <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()">

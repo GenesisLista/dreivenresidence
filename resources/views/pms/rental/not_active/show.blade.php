@@ -3,6 +3,7 @@
 @section('title', 'Show Not Active Rental')
 
 @section('content')
+
 <div class="section-body mt-3">
     <div class="container-fluid">
         <div class="card">
@@ -14,37 +15,37 @@
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="form-group">
                             <label class="form-label">Rental Name</label>
-                            <div class="form-control-plaintext">Genesis Lista</div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="form-group">
-                            <label class="form-label">Rental Location</label>
-                            <div class="form-control-plaintext">Sampaloc</div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="form-group">
-                            <label class="form-label">Rental Room</label>
-                            <div class="form-control-plaintext">201</div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="form-group">
-                            <label class="form-label">Rental Monthly</label>
-                            <div class="form-control-plaintext">5,000</div>
+                            <div class="form-control-plaintext">{{ $rental->tenant->name }}</div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="form-group">
                             <label class="form-label">Rental Start Date</label>
-                            <div class="form-control-plaintext">03/13/2022</div>
+                            <div class="form-control-plaintext">{{ date('m/d/Y',strtotime($rental->start_date)) }}</div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="form-group">
                             <label class="form-label">Rental End Date</label>
-                            <div class="form-control-plaintext">03/13/2023</div>
+                            <div class="form-control-plaintext">{{ date('m/d/Y',strtotime($rental->end_date)) }}</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Rental Monthly</label>
+                            <div class="form-control-plaintext">{{ number_format($rental->monthly_rental) }}</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Rental Location</label>
+                            <div class="form-control-plaintext">{{ $rental->apartment->location_list->name }}</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Rental Room</label>
+                            <div class="form-control-plaintext">{{ $rental->apartment->room }}</div>
                         </div>
                     </div>
                     <div class="col-12">
