@@ -44,7 +44,11 @@ class ActiveRentalController extends Controller
     public function create()
     {
         // Display the form
-        $tenant = Tenant::where('tenant_status_id',1)->get();
+        $tenant = Tenant::where('tenant_status_id',1)
+        ->whereDoesntHave('rental_list', function ($query) {
+            $query->whereNull('end_date');
+        })
+        ->get();
         $location = Location::all();
 
         return view('pms.rental.active.create')->with([

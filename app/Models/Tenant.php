@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Rental;
 use App\Models\Apartment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,5 +22,11 @@ class Tenant extends Model
     public function apartment()
     {
         return $this->belongsToMany(Apartment::class)->withTimestamps();
+    }
+
+    // Relation to rental
+    public function rental_list()
+    {
+        return $this->belongsTo(Rental::class, 'id', 'tenant_id');
     }
 }
