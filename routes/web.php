@@ -9,6 +9,11 @@ use App\Http\Controllers\Pms\ApartmentController;
 use App\Http\Controllers\Pms\AlrBuildingController;
 use App\Http\Controllers\Pms\ActiveRentalController;
 use App\Http\Controllers\Pms\ActiveTenantController;
+use App\Http\Controllers\Pms\BillRentalAlrBuildingController;
+use App\Http\Controllers\Pms\BillRentalNewController;
+use App\Http\Controllers\Pms\BillRentalRoxasDistrictController;
+use App\Http\Controllers\Pms\BillRentalSampalocController;
+use App\Http\Controllers\Pms\BillRentalStaMesaController;
 use App\Http\Controllers\Pms\NotActiveRentalController;
 use App\Http\Controllers\Pms\TenantStatusController;
 use App\Http\Controllers\Pms\RoxasDistrictController;
@@ -45,6 +50,22 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     // Billing
+    Route::prefix('billing')->group(function () {
+        // Rental New billing
+        Route::resource('rental-new', BillRentalNewController::class);
+
+        // Rental Sampaloc Billing
+        Route::resource('rental-sampaloc', BillRentalSampalocController::class);
+
+        // Rental Sta. Mesa
+        Route::resource('rental-sta-mesa', BillRentalStaMesaController::class);
+
+        // Rental Roxas District
+        Route::resource('rental-roxas-district', BillRentalRoxasDistrictController::class);
+
+        // ALR Building
+        Route::resource('rental-alr-building', BillRentalAlrBuildingController::class);
+    });
 
     // Tenant
     Route::prefix('tenant')->group(function () {

@@ -16,7 +16,7 @@
             <li class="{{ Request::segment(1) === 'billing' ? 'active' : null }}">
                 <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-calculator"></i><span>Billing</span></a>
                 <ul>
-                    <li class="{{ Request::segment(2) === 'rental' ? 'active' : null }}"><a href="javascript:void(0)">Rental Billing</a></li>
+                    <li class="{{ Request::segment(2) === 'rental-new' || 'rental-sampaloc' ? 'active' : null }}"><a href="{{ route('rental-new.index') }}">Rental Billing</a></li>
                     <li class="{{ Request::segment(2) === 'meralco' ? 'active' : null }}"><a href="javascript:void(0)">Meralco Billing</a></li>
                     <li class="{{ Request::segment(2) === 'maynilad' ? 'active' : null }}"><a href="javascript:void(0)">Maynilad Billing</a></li>
                 </ul>
