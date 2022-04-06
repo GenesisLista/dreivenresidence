@@ -9,85 +9,98 @@
             <ul class="nav nav-tabs page-header-tab">
                 <li class="nav-item"><a class="nav-link active" href="{{ route('rental-new.index') }}">New</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('rental-sampaloc.index') }}">Sampaloc</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('rental-sta-mesa.index') }}">Sta. Mesa</a></li>
+                <li class="nav-item"><a class="nav-link " href="{{ route('rental-sta-mesa.index') }}">Sta. Mesa</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('rental-roxas-district.index') }}">Roxas District</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('rental-alr-building.index') }}">ALR Building</a></li>
             </ul>
+            <div class="header-action">
+                <a class="btn btn-primary" href="{{ route('rental-new.create') }}"><i class="fe fe-plus mr-2"></i> Add</a>
+            </div>
         </div>
     </div>
 </div>
 <div class="section-body mt-3">
     <div class="container-fluid">
-        <form action="{{ route('active-rental.store') }}" method="POST" enctype="multipart/form-data" autocomplete="false">
-            {{ csrf_field() }}
-            <div class="card">
-                <div class="card-body">
-                    <div class="row clearfix">
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="form-group">
-                                <label class="form-label">Billing Code</label>
-                                <input type="text" class="form-control" name="bill_rental_code" value="BR123QYDH" readonly>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="form-group">
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="form-group">
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="form-group">
-                                <label class="form-label">Billing date - mm/dd/yyyy *</label>
-                                <input name="bill_rental_date" data-provide="datepicker" data-date-autoclose="true" class="form-control" value="{{ old('bill_rental_date') }}" placeholder="4/20/2022" autocomplete="false">
-                                @if($errors->has('rental_monthly'))
-                                <span class="text-danger">{{ $errors->first('rental_monthly') }}</span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="form-group">
-                                <label class="form-label">Billing period - mm/dd/yyyy *</label>
-                                <div class="input-daterange input-group" data-provide="datepicker">
-                                    <input type="text" class="input-sm form-control" name="start">
-                                    <span class="input-group-addon range-to">to</span>
-                                    <input type="text" class="input-sm form-control" name="end">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="form-group">
-                                <label class="form-label">Billing location *</label>
-                                <select class="form-control show-tick" name="rental_tenant_name">
-                                    <option value="">Select Location</option>
-                                    <option value="">Sta. Mesa</option>
-                                </select>
-                                @if($errors->has('rental_tenant_name'))
-                                <span class="text-danger">{{ $errors->first('rental_tenant_name') }}</span>
-                                @endif
-                            </div>
-                        </div>
+        <div class="row clearfix">
+            <div class="col-lg-12">
 
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary"><i class="fe fe-check mr-2"></i>Add</button>
+                <!-- alert -->
+                @if(session('success_add'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Success!</strong> {{ session('success_add') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @elseif(session('success_update'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Success!</strong> {{ session('success_update') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @elseif(session('success_delete'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Success!</strong> {{ session('success_delete') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover js-basic-example dataTable table_custom border-style spacing5">
+                                <thead>
+                                    <tr>
+                                        <th>Location</th>
+                                        <th>Billing Code</th>
+                                        <th>Billing Date</th>
+                                        <th>Billing Period</th>
+                                        <th>Billed Amount</th>
+                                        <th>Billed Paid</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Location</th>
+                                        <th>Billing Code</th>
+                                        <th>Billing Date</th>
+                                        <th>Billing Period</th>
+                                        <th>Billed Amount</th>
+                                        <th>Billed Paid</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    @foreach($bill_rental as $billRental)
+                                    <tr>
+                                        <td>{{ $billRental->location->name }}</td>
+                                        <td>{{ $billRental->bill_code }}</td>
+                                        <td>{{ date('m/d/Y',strtotime($billRental->bill_date)) }}</td>
+                                        <td>{{ date('m/d/Y',strtotime($billRental->bill_period_start)) }} - {{ date('m/d/Y',strtotime($billRental->bill_period_end)) }}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="actions">
+                                            <a href="{{ route('rental-new.show', 0) }}"><button class="btn btn-sm btn-icon on-default m-r-5" data-toggle="tooltip" data-original-title="Show"><i class="icon-doc" aria-hidden="true"></i></button></a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 @stop
 
 @section('page-styles')
-<link rel="stylesheet" href="{{ asset('public/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" />
+<link rel="stylesheet" href="{{ asset('public/plugins/datatable/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('public/plugins/datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('public/plugins/datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css') }}">
 @stop
 
 @section('page-script')
-<script src="{{ asset('public/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('public/bundles/dataTables.bundle.js') }}"></script>
 <script src="{{ asset('public/js/core.js') }}"></script>
-<script src="{{ asset('public/js/form/form-advanced.js') }}"></script>
+<script src="{{ asset('public/js/table/datatable.js') }}"></script>
 @stop

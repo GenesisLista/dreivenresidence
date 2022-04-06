@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Pms;
 
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use App\Models\Location;
+use App\Models\BillRental;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\BillRentalStoreRequest;
 
 class BillRentalNewController extends Controller
 {
@@ -14,8 +19,13 @@ class BillRentalNewController extends Controller
      */
     public function index()
     {
-        // Display the  add form
-        return view('pms.billing.rental.new.index');
+        // Display the list
+        $billRental = BillRental::with([
+            'location'
+        ])->get();
+        return view('pms.billing.rental.new.index')->with([
+            'bill_rental' => $billRental
+        ]);
     }
 
     /**
@@ -25,7 +35,13 @@ class BillRentalNewController extends Controller
      */
     public function create()
     {
-        //
+        // Display the  add form
+        $location = Location::all()->sortBy('name');
+        $billingCode = Str::upper(Str::random(8));
+        return view('pms.billing.rental.new.create')->with([
+            'location' => $location,
+            'bcode' => $billingCode
+        ]);
     }
 
     /**
@@ -34,9 +50,21 @@ class BillRentalNewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BillRentalStoreRequest $request, BillRental $billRental)
     {
-        //
+        // Save the data
+
+        // Validate
+        $validated = $request->validated();
+
+        $billRental->bill_code = $request->bill_code;
+        $billRental->bill_date = Carbon::createFromFormat('m/d/Y', $request->bill_rental_date)->format('Y-m-d');
+        $billRental->bill_period_start = Carbon::createFromFormat('m/d/Y', $request->bill_period_start)->format('Y-m-d');
+        $billRental->bill_period_end = Carbon::createFromFormat('m/d/Y', $request->bill_period_end)->format('Y-m-d');
+        $billRental->location_id = $request->bill_location;
+        $billRental->save();
+
+        return redirect()->route('rental-new.index')->with('success_add', 'Billed Rental added successfully');
     }
 
     /**
