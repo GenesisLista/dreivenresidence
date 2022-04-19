@@ -34,4 +34,10 @@ class Apartment extends Model
     {
         return $this->belongsToMany(Tenant::class)->withTimestamps();
     }
+
+    // Bill Sampalocs Relation
+    public function bill_sampaloc()
+    {
+        return $this->belongsToMany(BillSampaloc::class)->withTimestamps();
+    }
 }

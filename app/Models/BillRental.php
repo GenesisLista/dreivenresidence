@@ -23,4 +23,10 @@ class BillRental extends Model
     {
         return $this->belongsTo(Location::class, 'location_id');
     }
+
+    // Relation to Bill Sampaloc
+    public function bill_sampaloc()
+    {
+        return $this->belongsTo(BillSampaloc::class, 'id', 'bill_rental_id');
+    }
 }

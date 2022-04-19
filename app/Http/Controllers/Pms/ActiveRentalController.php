@@ -211,30 +211,6 @@ class ActiveRentalController extends Controller
         Rental::destroy($id);
 
         return redirect()->route('active-rental.index')->with('success_delete', 'Record deleted successfully');
-
-        // Get the apartment id using the tenant because it use pivot table
-        // $tenant_id = $id;
-        // $tenant = Tenant::whereId($tenant_id)
-        //     ->with([
-        //         'apartment',
-        //         'apartment.location_list'
-        //     ])
-        //     ->get();
-
-        // $apartment_id = $tenant[0]->apartment[0]->id;
-
-        // Update the apartment status
-        // $apartment = Apartment::findOrFail($apartment_id);
-        // $apartment->apartment_status_id = 1;
-        // $apartment->save();
-
-        // Detached the tenant and apartment pivot table
-        // $apartment->tenant()->detach();
-
-        // Delete the tenant details
-        // Tenant::destroy($tenant_id);
-
-        // return redirect()->route('active-rental.index')->with('success_delete', 'Record deleted successfully');
     }
 
     /* This is for the room list */

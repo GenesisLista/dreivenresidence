@@ -55,6 +55,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('rental-new', BillRentalNewController::class);
 
         // Rental Sampaloc Billing
+        Route::get('rental-sampaloc/rental-add-spl/{id}', [BillRentalSampalocController::class, 'rental_add_spl'])->name('rental-sampaloc.rental-add-spl');
+        Route::post('rental-sampaloc/rental-list', [BillRentalSampalocController::class, 'rental_list'])->name('rental-sampaloc.rental-list');
         Route::resource('rental-sampaloc', BillRentalSampalocController::class);
 
         // Rental Sta. Mesa

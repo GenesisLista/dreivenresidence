@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Database\Seeders\LocationSeeder;
 use Database\Seeders\ApartmentStatusSeeder;
+use Database\Seeders\BillPaymentStatusSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,6 +27,16 @@ class DatabaseSeeder extends Seeder
         // Check if the table exists
         if(DB::table('locations')->count()==0) {
             $this->call(LocationSeeder::class);
+        }
+
+        // Check if the table exists
+        if(DB::table('bill_payment_statuses')->count()==0) {
+            $this->call(BillPaymentStatusSeeder::class);
+        }
+
+        // Check if the table exists
+        if(DB::table('bill_types')->count()==0) {
+            $this->call(BillTypeSeeder::class);
         }
 
     }

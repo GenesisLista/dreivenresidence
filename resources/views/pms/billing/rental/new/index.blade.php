@@ -52,9 +52,6 @@
                                         <th>Billing Code</th>
                                         <th>Billing Date</th>
                                         <th>Billing Period</th>
-                                        <th>Billed Amount</th>
-                                        <th>Billed Paid</th>
-                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -63,9 +60,6 @@
                                         <th>Billing Code</th>
                                         <th>Billing Date</th>
                                         <th>Billing Period</th>
-                                        <th>Billed Amount</th>
-                                        <th>Billed Paid</th>
-                                        <th>Actions</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
@@ -75,11 +69,6 @@
                                         <td>{{ $billRental->bill_code }}</td>
                                         <td>{{ date('m/d/Y',strtotime($billRental->bill_date)) }}</td>
                                         <td>{{ date('m/d/Y',strtotime($billRental->bill_period_start)) }} - {{ date('m/d/Y',strtotime($billRental->bill_period_end)) }}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="actions">
-                                            <a href="{{ route('rental-new.show', 0) }}"><button class="btn btn-sm btn-icon on-default m-r-5" data-toggle="tooltip" data-original-title="Show"><i class="icon-doc" aria-hidden="true"></i></button></a>
-                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
