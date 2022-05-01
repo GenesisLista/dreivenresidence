@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Pms;
 
 use Carbon\Carbon;
 use App\Models\Location;
+use App\Models\Apartment;
 use App\Models\BillRental;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BillRentalStoreRequest;
 
@@ -20,11 +22,21 @@ class BillRentalNewController extends Controller
     public function index()
     {
         // Display the list
+        
+        // Bill Sampaloc
+        $sampalocSum = BillRental::where('location_id',1)
+        ->withCount([
+            'bill_sampaloc AS billed_amount_sum' => function ($query) {
+                $query->select(DB::raw("SUM(billed_amount) AS billed_amount_sum"));
+            }
+        ])->get();
+
         $billRental = BillRental::with([
             'location'
         ])->get();
         return view('pms.billing.rental.new.index')->with([
-            'bill_rental' => $billRental
+            'bill_rental' => $billRental,
+            'sampaloc_sum' => $sampalocSum
         ]);
     }
 

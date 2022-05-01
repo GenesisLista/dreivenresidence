@@ -42,6 +42,52 @@
                 </div>
                 @endif
 
+                
+
+
+                <div class="row clearfix">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>Samplaoc</h6>
+                                <h3 class="pt-3">Php 
+                                    <span class="counter">
+                                    @php($sampaloc_total = 0)
+                                    @foreach($sampaloc_sum as $ssum)
+                                        @php($sampaloc_total += $ssum->billed_amount_sum)
+                                    @endforeach
+                                    {{ number_format($sampaloc_total) }}
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>Sta. Mesa</h6>
+                                <h3 class="pt-3">Php <span class="counter">0</span></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>Roxas District</h6>
+                                <h3 class="pt-3">Php <span class="counter">0</span></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>ALR Building</h6>
+                                <h3 class="pt-3">Php <span class="counter">0</span></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
