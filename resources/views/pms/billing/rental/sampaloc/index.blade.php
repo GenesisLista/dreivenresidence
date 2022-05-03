@@ -75,7 +75,7 @@
                                             <a href="{{ route('rental-sampaloc.rental-add-spl', $billRental->id) }}">
                                                 <button class="btn btn-sm btn-icon on-default m-r-5" data-toggle="tooltip" data-original-title="Add"><i class="icon-users" aria-hidden="true"></i></button>
                                             </a>
-                                            <a href="{{ route('rental-sampaloc.show', 0) }}"><button class="btn btn-sm btn-icon on-default m-r-5" data-toggle="tooltip" data-original-title="Show"><i class="icon-doc" aria-hidden="true"></i></button></a>
+                                            <!-- <a href="{{ route('rental-sampaloc.show', 0) }}"><button class="btn btn-sm btn-icon on-default m-r-5" data-toggle="tooltip" data-original-title="Show"><i class="icon-doc" aria-hidden="true"></i></button></a> -->
                                             <!-- <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()">
                                                 <button class="btn btn-sm btn-icon on-default button-remove" data-toggle="tooltip" data-original-title="Delete"><i class="icon-trash" aria-hidden="true"></i></button>
                                             </a>

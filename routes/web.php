@@ -60,6 +60,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('rental-sampaloc', BillRentalSampalocController::class);
 
         // Rental Sta. Mesa
+        Route::get('rental-sta-mesa/rental-add-stm/{id}', [BillRentalStaMesaController::class, 'rental_add_stm'])->name('rental-sta-mesa.rental-add-stm');
+        Route::post('rental-sta-mesa/rental-list', [BillRentalStaMesaController::class, 'rental_list'])->name('rental-sta-mesa.rental-list');
         Route::resource('rental-sta-mesa', BillRentalStaMesaController::class);
 
         // Rental Roxas District

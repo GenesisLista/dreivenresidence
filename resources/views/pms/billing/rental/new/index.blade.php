@@ -66,7 +66,15 @@
                         <div class="card">
                             <div class="card-body">
                                 <h6>Sta. Mesa</h6>
-                                <h3 class="pt-3">Php <span class="counter">0</span></h3>
+                                <h3 class="pt-3">Php 
+                                    <span class="counter">
+                                    @php($sta_mesa_total = 0)
+                                    @foreach($sta_mesa_sum as $stmsum)
+                                        @php($sta_mesa_total += $stmsum->billed_amount_sum)
+                                    @endforeach
+                                    {{ number_format($sta_mesa_total) }}
+                                    </span>
+                                </h3>
                             </div>
                         </div>
                     </div>

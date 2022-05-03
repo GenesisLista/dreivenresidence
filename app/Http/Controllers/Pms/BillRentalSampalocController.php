@@ -21,6 +21,7 @@ class BillRentalSampalocController extends Controller
     public function index()
     {
         // Display the list
+        // bill_sampaloc -> relation on BillRental Model
         $billRental = BillRental::where('location_id',1)
         ->withCount([
             'bill_sampaloc AS billed_amount_sum' => function ($query) {

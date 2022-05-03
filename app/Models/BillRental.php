@@ -29,4 +29,10 @@ class BillRental extends Model
     {
         return $this->belongsTo(BillSampaloc::class, 'id', 'bill_rental_id');
     }
+
+    // Relation to Bill Sta Mesa
+    public function bill_sta_mesa()
+    {
+        return $this->belongsTo(BillStaMesa::class, 'id', 'bill_rental_id');
+    }
 }
