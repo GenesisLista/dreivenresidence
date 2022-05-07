@@ -38,13 +38,23 @@ class BillRentalNewController extends Controller
             }
         ])->get();
 
+        // Bill Roxas District
+        $roxasDistrictSum = BillRental::where('location_id',3)
+        ->withCount([
+            'bill_roxas_district AS billed_amount_sum' => function ($query) {
+                $query->select(DB::raw("SUM(billed_amount) AS billed_amount_sum"));
+            }
+        ])->get();
+
+
         $billRental = BillRental::with([
             'location'
         ])->get();
         return view('pms.billing.rental.new.index')->with([
             'bill_rental' => $billRental,
             'sampaloc_sum' => $sampalocSum,
-            'sta_mesa_sum' => $staMesaSum
+            'sta_mesa_sum' => $staMesaSum,
+            'roxas_district_sum' => $roxasDistrictSum
         ]);
     }
 

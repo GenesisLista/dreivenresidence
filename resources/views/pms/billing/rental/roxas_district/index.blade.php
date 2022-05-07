@@ -16,6 +16,7 @@
         </div>
     </div>
 </div>
+
 <div class="section-body mt-3">
     <div class="container-fluid">
         <div class="row clearfix">
@@ -64,24 +65,26 @@
                                     </tr>
                                 </tfoot>
                                 <tbody>
+                                    @foreach($bill_rental as $billRental)
                                     <tr>
-                                        <td>BR123QYDH</td>
-                                        <td>4/20/2022</td>
-                                        <td>10/4/2022 - 10/5/2022</td>
-                                        <td>10,000</td>
-                                        <td>5,000</td>
+                                        <td>{{ $billRental->bill_code }}</td>
+                                        <td>{{ $billRental->bill_date }}</td>
+                                        <td>{{ $billRental->bill_period_start }} - {{ $billRental->bill_period_end }}</td>
+                                        <td>{{ number_format($billRental->billed_amount_sum) }}</td>
+                                        <td>{{ number_format($billRental->billed_paid_amount_sum) }}</td>
                                         <td class="actions">
-                                            <a href="{{ route('rental-sampaloc.show', 0) }}"><button class="btn btn-sm btn-icon on-default m-r-5" data-toggle="tooltip" data-original-title="Add"><i class="icon-users" aria-hidden="true"></i></button></a>
-                                            <a href="{{ route('rental-sampaloc.show', 0) }}"><button class="btn btn-sm btn-icon on-default m-r-5" data-toggle="tooltip" data-original-title="Show"><i class="icon-doc" aria-hidden="true"></i></button></a>
+                                            <a href="{{ route('rental-roxas-district.rental-add-rd', $billRental->id) }}"><button class="btn btn-sm btn-icon on-default m-r-5" data-toggle="tooltip" data-original-title="Add"><i class="icon-users" aria-hidden="true"></i></button></a>
+                                            <!-- <a href="{{ route('rental-sampaloc.show', 0) }}"><button class="btn btn-sm btn-icon on-default m-r-5" data-toggle="tooltip" data-original-title="Show"><i class="icon-doc" aria-hidden="true"></i></button></a>
                                             <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()">
                                                 <button class="btn btn-sm btn-icon on-default button-remove" data-toggle="tooltip" data-original-title="Delete"><i class="icon-trash" aria-hidden="true"></i></button>
                                             </a>
                                             <form method="post" action="{{ route('rental-sampaloc.destroy', 0) }}">
                                                 @method('DELETE')
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                            </form>
+                                            </form> -->
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

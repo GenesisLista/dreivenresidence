@@ -65,6 +65,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('rental-sta-mesa', BillRentalStaMesaController::class);
 
         // Rental Roxas District
+        Route::get('rental-roxas-district/rental-add-rd/{id}', [BillRentalRoxasDistrictController::class, 'rental_add_rd'])->name('rental-roxas-district.rental-add-rd');
+        Route::post('rental-roxas-district/rental-list', [BillRentalRoxasDistrictController::class, 'rental_list'])->name('rental-roxas-district.rental-list');
         Route::resource('rental-roxas-district', BillRentalRoxasDistrictController::class);
 
         // ALR Building

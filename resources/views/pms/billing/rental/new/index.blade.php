@@ -82,7 +82,15 @@
                         <div class="card">
                             <div class="card-body">
                                 <h6>Roxas District</h6>
-                                <h3 class="pt-3">Php <span class="counter">0</span></h3>
+                                <h3 class="pt-3">Php 
+                                    <span class="counter">
+                                    @php($roxas_district_total = 0)
+                                    @foreach($roxas_district_sum as $rdsum)
+                                        @php($roxas_district_total += $rdsum->billed_amount_sum)
+                                    @endforeach
+                                    {{ number_format($roxas_district_total) }}
+                                    </span>
+                                </h3>
                             </div>
                         </div>
                     </div>
