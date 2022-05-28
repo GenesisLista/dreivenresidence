@@ -67,8 +67,8 @@
                                     @foreach($bill_rental as $billRental)
                                     <tr>
                                         <td>{{ $billRental->bill_code }}</td>
-                                        <td>{{ $billRental->bill_date }}</td>
-                                        <td>{{ $billRental->bill_period_start }} - {{ $billRental->bill_period_end }}</td>
+                                        <td>{{ date('d/m/Y',strtotime($billRental->bill_date)) }}</td>
+                                        <td>{{ date('d/m/Y',strtotime($billRental->bill_period_start)) }} - {{ date('d/m/Y',strtotime($billRental->bill_period_end)) }}</td>
                                         <td>{{ number_format($billRental->billed_amount_sum) }}</td>
                                         <td>{{ number_format($billRental->billed_paid_amount_sum) }}</td>
                                         <td class="actions">

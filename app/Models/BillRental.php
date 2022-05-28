@@ -41,4 +41,10 @@ class BillRental extends Model
     {
         return $this->belongsTo(BillRoxasDistrict::class, 'id', 'bill_rental_id');
     }
+
+    // Relation to BIll ALR Building
+    public function bill_alr_building()
+    {
+        return $this->belongsTo(BillAlrBuilding::class, 'id', 'bill_rental_id');
+    }
 }

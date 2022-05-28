@@ -70,6 +70,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('rental-roxas-district', BillRentalRoxasDistrictController::class);
 
         // ALR Building
+        Route::get('rental-alr-building/rental-add-alrb/{id}', [BillRentalAlrBuildingController::class, 'rental_add_alrb'])->name('rental-alr-building.rental-add-alrb');
+        Route::post('rental-alr-building/rental-list', [BillRentalAlrBuildingController::class, 'rental_list'])->name('rental-alr-building.rental-list');
         Route::resource('rental-alr-building', BillRentalAlrBuildingController::class);
     });
 

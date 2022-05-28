@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BillRentalStoreRequest;
+use App\Models\BillAlrBuilding;
 
 class BillRentalNewController extends Controller
 {
@@ -46,6 +47,14 @@ class BillRentalNewController extends Controller
             }
         ])->get();
 
+        // Bill ALR Building
+        $alrBuildingSum = BillRental::where('location_id',4)
+        ->withCount([
+            'bill_alr_building AS billed_amount_sum' => function ($query) {
+                $query->select(DB::raw("SUM(billed_amount) AS billed_amount_sum"));
+            }
+        ])->get();
+
 
         $billRental = BillRental::with([
             'location'
@@ -54,7 +63,8 @@ class BillRentalNewController extends Controller
             'bill_rental' => $billRental,
             'sampaloc_sum' => $sampalocSum,
             'sta_mesa_sum' => $staMesaSum,
-            'roxas_district_sum' => $roxasDistrictSum
+            'roxas_district_sum' => $roxasDistrictSum,
+            'alr_building_sum' => $alrBuildingSum
         ]);
     }
 

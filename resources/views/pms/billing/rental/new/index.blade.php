@@ -42,9 +42,6 @@
                 </div>
                 @endif
 
-                
-
-
                 <div class="row clearfix">
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
@@ -59,6 +56,7 @@
                                     {{ number_format($sampaloc_total) }}
                                     </span>
                                 </h3>
+                                <span class="text-danger mr-2">Billed Amount</span>
                             </div>
                         </div>
                     </div>
@@ -75,6 +73,7 @@
                                     {{ number_format($sta_mesa_total) }}
                                     </span>
                                 </h3>
+                                <span class="text-danger mr-2">Billed Amount</span>
                             </div>
                         </div>
                     </div>
@@ -91,6 +90,7 @@
                                     {{ number_format($roxas_district_total) }}
                                     </span>
                                 </h3>
+                                <span class="text-danger mr-2">Billed Amount</span>
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,16 @@
                         <div class="card">
                             <div class="card-body">
                                 <h6>ALR Building</h6>
-                                <h3 class="pt-3">Php <span class="counter">0</span></h3>
+                                <h3 class="pt-3">Php 
+                                    <span class="counter">
+                                    @php($alr_building_total = 0)
+                                    @foreach($alr_building_sum as $alrbsum)
+                                        @php($alr_building_total += $alrbsum->billed_amount_sum)
+                                    @endforeach
+                                    {{ number_format($alr_building_total) }}
+                                    </span>
+                                </h3>
+                                <span class="text-danger mr-2">Billed Amount</span>
                             </div>
                         </div>
                     </div>

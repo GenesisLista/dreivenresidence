@@ -114,7 +114,14 @@ class BillRentalRoxasDistrictController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Bill Roxas District
+        $billRoxasDistrict = BillRoxasDistrict::findOrFail($id);
+        $bill_rental_id = $billRoxasDistrict->bill_rental_id;
+
+        // Delete the data
+        BillRoxasDistrict::destroy($id);
+
+        return redirect()->route('rental-roxas-district.rental-add-rd', $bill_rental_id)->with('success_delete', 'Record deleted successfully');
     }
 
     /**
