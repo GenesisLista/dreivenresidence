@@ -9,6 +9,8 @@ use App\Http\Controllers\Pms\ApartmentController;
 use App\Http\Controllers\Pms\AlrBuildingController;
 use App\Http\Controllers\Pms\ActiveRentalController;
 use App\Http\Controllers\Pms\ActiveTenantController;
+use App\Http\Controllers\Pms\BillMeralco\MeralcoNewController;
+use App\Http\Controllers\Pms\BillMeralco\NewController;
 use App\Http\Controllers\Pms\BillRentalAlrBuildingController;
 use App\Http\Controllers\Pms\BillRentalNewController;
 use App\Http\Controllers\Pms\BillRentalRoxasDistrictController;
@@ -73,6 +75,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('rental-alr-building/rental-add-alrb/{id}', [BillRentalAlrBuildingController::class, 'rental_add_alrb'])->name('rental-alr-building.rental-add-alrb');
         Route::post('rental-alr-building/rental-list', [BillRentalAlrBuildingController::class, 'rental_list'])->name('rental-alr-building.rental-list');
         Route::resource('rental-alr-building', BillRentalAlrBuildingController::class);
+
+        // --
+
+        // Meralco New Billing
+        Route::resource('meralco-new', MeralcoNewController::class);
     });
 
     // Tenant
