@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row clearfix">
-                        <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="form-group">
                                 <select class="form-control show-tick" name="rental_tenant_name">
                                     <option value="">Select Tenant Name</option>
@@ -23,7 +23,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="form-group">
                                 <select class="form-control show-tick" id="rental_location" name="rental_location">
                                     <option value="">Select Location</option>
@@ -36,7 +36,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="form-group">
                                 <select class="form-control show-tick" id="rental_room_number" name="rental_room_number">
                                     <option value="">Select Room Number</option>
@@ -46,7 +46,12 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="rental_bed_number" placeholder="Bed Number">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="rental_monthly" value="{{ old('rental_monthly') }}" placeholder="Rental monthly *">
                                 @if($errors->has('rental_monthly'))
@@ -54,7 +59,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="form-group">
                                 <div class="form-group">
                                     <input name="rental_start_date" data-provide="datepicker" data-date-autoclose="true" class="form-control" value="{{ old('rental_start_date') }}" placeholder="Rental start date - mm/dd/yyyy *" autocomplete="false">

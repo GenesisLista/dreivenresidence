@@ -11,27 +11,33 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row clearfix">
-                        <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="rental_tenant_name" value="{{ $rental->tenant->name }}" readonly>
                                 <input type="hidden" name="tenant_id" value="{{ $rental->tenant_id }}" />
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="rental_location" value="{{ $rental->apartment->location_list->name }}" readonly>
                                 <input type="hidden" name="apartment_id" value="{{ $rental->apartment_id }}" />
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="form-group">
                             <input type="text" class="form-control" name="rental_room_number" value="{{ $rental->apartment->room }}" readonly>
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="form-group">
+                            <input type="text" class="form-control" name="rental_bed_number" value="{{ $rental->bed_number }}" readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="rental_monthly" value="{{ $rental->monthly_rental }}">
                                 @if($errors->has('rental_monthly'))
@@ -40,7 +46,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="form-group">
                                 <div class="form-group">
                                     <input name="rental_start_date" data-provide="datepicker" data-date-autoclose="true" class="form-control" value="{{ date('m/d/Y',strtotime($rental->start_date)) }}" autocomplete="false">
@@ -51,7 +57,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="form-group">
                                 <div class="form-group">
                                     <input name="rental_end_date" data-provide="datepicker" data-date-autoclose="true" class="form-control" value="{{ old('rental_end_date') }}" placeholder="End date" autocomplete="false">

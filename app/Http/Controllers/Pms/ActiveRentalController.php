@@ -81,6 +81,7 @@ class ActiveRentalController extends Controller
         // Save Rental details
         $rental->tenant_id = $request->rental_tenant_name;
         $rental->apartment_id = $apartment[0]->id;
+        $rental->bed_number = $request->rental_bed_number;
         $rental->monthly_rental = $request->rental_monthly;
         $rental->start_date = Carbon::createFromFormat('m/d/Y', $request->rental_start_date)->format('Y-m-d');
         $rental->save();

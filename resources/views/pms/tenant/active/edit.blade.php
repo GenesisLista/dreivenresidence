@@ -13,7 +13,7 @@
                     <div class="row clearfix">
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="tenant_name" value="{{ $tenant->name }}" class="form-control" placeholder="tenant_name">
+                                <input type="text" name="tenant_name" value="{{ $tenant->name }}" class="form-control">
                                 @if($errors->has('tenant_name'))
                                 <span class="text-danger">{{ $errors->first('tenant_name') }}</span>
                                 @endif
@@ -22,7 +22,7 @@
 
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="tenant_email_address" value="{{ $tenant->email }}" class="form-control" placeholder="tenant_email_address">
+                                <input type="text" name="tenant_email_address" value="{{ $tenant->email }}" class="form-control">
                                 @if($errors->has('tenant_email_address'))
                                 <span class="text-danger">{{ $errors->first('tenant_email_address') }}</span>
                                 @endif
@@ -31,10 +31,34 @@
 
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="tenant_mobile_number" value="{{ $tenant->mobile }}" class="form-control" placeholder="tenant_mobile_number">
+                                <input type="text" name="tenant_mobile_number" value="{{ $tenant->mobile }}" class="form-control">
                                 @if($errors->has('tenant_mobile_number'))
                                 <span class="text-danger">{{ $errors->first('tenant_mobile_number') }}</span>
                                 @endif
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="tenant_address" value="{{ $tenant->address }}">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="tenant_school_company" value="{{ $tenant->school_company }}">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="tenant_person_to_notify" value="{{ $tenant->person_to_notify }}">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="tenant_person_contact_number" value="{{ $tenant->person_contact_number }}">
                             </div>
                         </div>
 

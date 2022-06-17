@@ -54,6 +54,10 @@ class ActiveTenantController extends Controller
         $tenant->name = $request->tenant_name;
         $tenant->email = $request->tenant_email_address;
         $tenant->mobile = $request->tenant_mobile_number;
+        $tenant->address = $request->tenant_address;
+        $tenant->school_company = $request->tenant_school_company;
+        $tenant->person_to_notify = $request->tenant_person_to_notify;
+        $tenant->person_contact_number = $request->tenant_person_contact_number;
         $tenant->tenant_status_id = 1;
         $tenant->save();
 
@@ -69,7 +73,11 @@ class ActiveTenantController extends Controller
     public function show($id)
     {
         // Display the details
-        $tenant = Tenant::findOrFail($id);
+        $tenant = Tenant::with([
+            'rental_list',
+            'rental_list.apartment',
+            'rental_list.apartment.location_list'
+        ])->findOrFail($id);
 
         return view('pms.tenant.active.show')->with([
             'tenant' => $tenant
@@ -110,6 +118,10 @@ class ActiveTenantController extends Controller
         $tenant->name = $request->tenant_name;
         $tenant->email = $request->tenant_email_address;
         $tenant->mobile = $request->tenant_mobile_number;
+        $tenant->address = $request->tenant_address;
+        $tenant->school_company = $request->tenant_school_company;
+        $tenant->person_to_notify = $request->tenant_person_to_notify;
+        $tenant->person_contact_number = $request->tenant_person_contact_number;
         $tenant->save();
 
         return redirect()->route('active-tenant.index')->with('success_update', 'Record updated successfully');

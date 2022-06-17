@@ -32,6 +32,55 @@
                             <div class="form-control-plaintext">{{ $tenant->mobile }}</div>
                         </div>
                     </div>
+                    <div class="col-lg-12 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Address</label>
+                            <div class="form-control-plaintext">{{ $tenant->address }}</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">School / Company Name</label>
+                            <div class="form-control-plaintext">{{ $tenant->school_company }}</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Person to notify in case of emergency</label>
+                            <div class="form-control-plaintext">{{ $tenant->person_to_notify }}</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Person contact number</label>
+                            <div class="form-control-plaintext">{{ $tenant->person_contact_number }}</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Date move in</label>
+                            <div class="form-control-plaintext">{{ $tenant->rental_list == null ? '' : date('m/d/Y',strtotime($tenant->rental_list->start_date)) }}</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">Location</label>
+                            <div class="form-control-plaintext">{{ $tenant->rental_list == null ? '' : $tenant->rental_list->apartment->location_list->name }}</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">Room Number</label>
+                            <div class="form-control-plaintext">{{ $tenant->rental_list == null ? '' : $tenant->rental_list->apartment->room }}</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">Bed Number</label>
+                            <div class="form-control-plaintext">{{ $tenant->rental_list == null ? '' : $tenant->rental_list->bed_number }}</div>
+                        </div>
+                    </div>
+
                     <div class="col-12">
                         <a class="btn btn-warning" href="{{ route('active-tenant.index') }}"><i class="fe fe-arrow-left mr-2"></i>Back</a>
                     </div>

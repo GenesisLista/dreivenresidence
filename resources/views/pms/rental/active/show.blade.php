@@ -14,39 +14,50 @@
             </div>
             <div class="card-body">
                 <div class="row clearfix">
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="form-group">
                             <label class="form-label">Rental Name</label>
                             <div class="form-control-plaintext">{{ $rental->tenant->name }}</div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="form-group">
                             <label class="form-label">Rental Start Date</label>
                             <div class="form-control-plaintext">{{ date('m/d/Y',strtotime($rental->start_date)) }}</div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="form-group">
                             
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="form-group">
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="form-group">
                             <label class="form-label">Rental Monthly</label>
                             <div class="form-control-plaintext">{{ $rental->monthly_rental }}</div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="form-group">
                             <label class="form-label">Rental Location</label>
                             <div class="form-control-plaintext">{{ $rental->apartment->location_list->name }}</div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="form-group">
                             <label class="form-label">Rental Room</label>
                             <div class="form-control-plaintext">{{ $rental->apartment->room }}</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label">Bed Number</label>
+                            <div class="form-control-plaintext">{{ $rental->bed_number }}</div>
                         </div>
                     </div>
                     

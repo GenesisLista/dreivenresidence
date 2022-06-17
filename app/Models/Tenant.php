@@ -15,7 +15,12 @@ class Tenant extends Model
     protected $fillable = [
         'name',
         'email',
-        'mobile'
+        'mobile',
+        'address',
+        'school_company',
+        'person_to_notify',
+        'person_contact_number',
+        'tenant_status_id'
     ];
 
     // Apartment relation

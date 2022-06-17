@@ -35,6 +35,30 @@
                             </div>
                         </div>
 
+                        <div class="col-lg-12 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="tenant_address" value="{{ old('tenant_address') }}" placeholder="Address">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="tenant_school_company" value="{{ old('tenant_school_company') }}" placeholder="School / Company">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="tenant_person_to_notify" value="{{ old('tenant_person_to_notify') }}" placeholder="Person to notify in case of emergency">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="tenant_person_contact_number" value="{{ old('tenant_person_contact_number') }}" placeholder="Person contact number">
+                            </div>
+                        </div>
+
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary"><i class="fe fe-check mr-2"></i>Add</button>
                             <a class="btn btn-warning" href="{{ route('active-tenant.index') }}"><i class="fe fe-arrow-left mr-2"></i>Back</a>
