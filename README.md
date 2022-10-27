@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Dreiven Residence Property Management System Test
+## About Dreiven Residence Property Management System
 
 ## About Laravel
 
